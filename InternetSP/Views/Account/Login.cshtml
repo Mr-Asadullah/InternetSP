@@ -1,0 +1,29 @@
+﻿@using InternetSP.Models
+@model User
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body class="body-bg">
+    <div class="center">
+        <div class="login">
+            <span class="sign">Log In</span>
+            <form asp-controller="Account" asp-action="Login" method="post">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" asp-for="Email" class="form-control" id="email" placeholder="Enter email">
+                <label for="pwd" class="form-label">Password</label>
+                <input type="password" asp-for="Password" class="form-control" id="pwd" placeholder="Enter password">
+                @if (ViewBag.Error!= "")
+                {
+                    <p class="text-danger">@ViewBag.Error</p>
+                }
+                <button type="submit" class="button btn">Login</button>
+            </form>
+        
+            <hr>
+            <p>Don't have an account? <a asp-controller="Login" asp-action="Register">Register here</a></p>
+        </div>
+    </div>
+</body>
+

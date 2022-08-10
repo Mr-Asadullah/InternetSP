@@ -1,0 +1,19 @@
+﻿@using InternetSP.Models
+@model Speed
+@{
+    ViewData["Title"] = "CreateUpdate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="CreateUpdate" method="post"> 
+    <label class="form-label">Name</label>
+    <input type="text" asp-for="Name" class="form-control" placeholder="Enter Speed Name"/>
+        @if (ViewBag.Duplicate!= "")
+        {
+            <p class="text-danger">
+                @Html.Label("", Convert.ToString((string)ViewBag.Duplicate))
+             </p>
+        }
+    <input type="submit" class="btn btn-primary" value="Save"/>
+</form>
+
