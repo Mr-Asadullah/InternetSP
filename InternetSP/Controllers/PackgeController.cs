@@ -53,6 +53,7 @@ namespace InternetSP.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateUpdate(Packge packge)
         {
+
             packge.UserId = 1;
             _context.Packges.Update(packge);
             await _context.SaveChangesAsync();

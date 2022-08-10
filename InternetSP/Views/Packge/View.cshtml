@@ -1,8 +1,40 @@
-﻿
+﻿@using InternetSP.Models
+@model Packge
 @{
     ViewData["Title"] = "View";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>View</h1>
-
+<div class="detail-panel">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="detail-Img">
+                <img src="@Model.Img">
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="description">
+                <h2 class="title">@Model.Name</h2>
+                <div class="des">
+                    <p>@Model.Detail</p>
+                </div>
+                <div class="col-md-4">
+                    <ul>
+                        <li>
+                            <span>Price</span> <strong>@Model.Price</strong>
+                        </li>
+                        <li>
+                            <span>Volume</span> <strong>@Model.Volume.Name</strong>
+                        </li>
+                        <li>
+                            <span>Speed</span> <strong>@Model.Speed.Name</strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="subscribe-btn">
+                    <button class="btn btn-success">@*<a href="#">Subscribe Packge</a>*@Subscribe Packge</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
