@@ -1,0 +1,41 @@
+﻿@using InternetSP.Models
+@model List<User>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Users</h2>
+<div class="card">
+    <div class="card-header bg-light">
+        [<a asp-action="Register">Create User</a>]
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayName("Name")</th>
+                     <th>@Html.DisplayName("Email")</th>
+                     <th>@Html.DisplayName("Phone Number")</th>
+                     <th>@Html.DisplayName("Joining")</th>
+                     <th>@Html.DisplayName("Role")</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Email</td>
+                    <td>@item.PhoneNumber</td>
+                    <td>@item.Joining</td>
+                    <td>@item.Role.Name</td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@item.Id" id="confirm" onclick = "return confirm('Record will be deleted permanently. Are you sure?');">Delete</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 ﻿using InternetSP.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace InternetSP.Controllers
 {
@@ -11,6 +12,11 @@ namespace InternetSP.Controllers
         {
             _context = context;
         }
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Users.Include(x => x.Role).ToListAsync());
+        }
+
         [HttpGet]
         public IActionResult Login()
         {

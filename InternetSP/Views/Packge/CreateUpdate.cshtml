@@ -1,0 +1,26 @@
+﻿@model InternetSP.Models.Packge
+@{
+    ViewData["Title"] = "CreateUpdate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-controller="packge" asp-action="CreateUpdate" method="post">
+    <label for="Name" class="form-label">Name:</label>
+        <input type="text" class="form-control"  placeholder="Enter Name" asp-for="Name">
+    <label for="Detail" class="form-label">Detail:</label>
+        <textarea asp-for="Detail"  class="form-control"></textarea>
+    <label for="Price" class="form-label">Price:</label>
+        <input type="text" class="form-control"  placeholder="Enter Price" asp-for="Price">
+    <label for="Volume" class="form-label">Volume:</label>
+        <select asp-for="VolumeId" asp-items="@ViewBag.Volume"  class="form-control">
+            <option>Select Volume</option>
+        </select>
+        <label for="Speed" class="form-label">Speed:</label>
+        <select asp-for="SpeedId" asp-items="@ViewBag.Speed" class="form-control">
+            <option>Select Speed</option>
+        </select>
+    <label for="Image" class="form-label">Image:</label>
+        <input type="text" class="form-control"  placeholder="Enter Img" asp-for="Img">
+        @*<input type="file" class="form-control"  asp-for="Img"/>*@
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

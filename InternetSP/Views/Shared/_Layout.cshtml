@@ -2,14 +2,14 @@
 @using Microsoft.EntityFrameworkCore;
 @inject InternetSPContext _context
 @{
-var accessToken = Context.Request.Cookies["user-access-token"];
-//UserInfoViewModel? user = null;
-User? user = null;
-if (!string.IsNullOrEmpty(accessToken))
-{
-//user=_context.Users.Where(x => x.AccessToken.Equals(accessToken)).Select(x=> new UserInfoViewModel {Name=x.Name,Role=x.Role.Name}).FirstOrDefault();
-user = _context.Users.Where(x => x.AccessToken.Equals(accessToken)).Include(x => x.Role).FirstOrDefault();
-}
+    var accessToken = Context.Request.Cookies["user-access-token"];
+    //UserInfoViewModel? user = null;
+    User? user = null;
+    if (!string.IsNullOrEmpty(accessToken))
+    {
+    //user=_context.Users.Where(x => x.AccessToken.Equals(accessToken)).Select(x=> new UserInfoViewModel {Name=x.Name,Role=x.Role.Name}).FirstOrDefault();
+        user = _context.Users.Where(x => x.AccessToken.Equals(accessToken)).Include(x => x.Role).FirstOrDefault();
+    }
 }
 <!DOCTYPE html>
 <html lang="en">

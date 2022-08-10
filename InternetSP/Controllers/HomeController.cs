@@ -1,21 +1,28 @@
 ﻿using InternetSP.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace InternetSP.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly InternetSPContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(InternetSPContext context)
         {
-            _logger = logger;
+            _context = context;
         }
+        //private readonly ILogger<HomeController> _logger;
 
-        public IActionResult Index()
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _context.Packges.ToListAsync());
         }
 
         public IActionResult Privacy()

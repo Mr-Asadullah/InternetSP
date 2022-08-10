@@ -1,0 +1,39 @@
+﻿@using InternetSP.Models
+@model List<Packge>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Packge</h2>
+<div class="card">
+    <div class="card-header bg-light">
+        [<a asp-action="CreateUpdate">Create Packge</a>]
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayName("Name")</th>
+                     <th>@Html.DisplayName("Speed")</th>
+                     <th>@Html.DisplayName("Volume")</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Speed.Name</td>
+                    <td>@item.Volume.Name</td>
+                    <td>
+                        <a asp-action="CreateUpdate" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" id="confirm" onclick = "return confirm('Record will be deleted permanently. Are you sure?');">Delete</a> |
+                        <a asp-action="View" asp-route-id="@item.Id">View</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
