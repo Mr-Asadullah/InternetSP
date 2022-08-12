@@ -16,7 +16,7 @@ namespace InternetSP.Controllers
         [Admin]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Packges.Include(x => x.Volume).Include(x => x.Speed).ToListAsync());
+            return View(await _context.Packges.Include(x => x.Volume).Include(x => x.Speed).Include(x => x.User).ToListAsync());
         }
 
         public async Task<IActionResult> View(int Id)
@@ -36,7 +36,7 @@ namespace InternetSP.Controllers
             return RedirectToAction("Index");
         }
 
-        [Admin]
+        [Admin]     
 
         [HttpGet]
         public async Task<IActionResult> CreateUpdate(int? id)
@@ -51,13 +51,34 @@ namespace InternetSP.Controllers
                 return View(await _context.Packges.Where(x => x.Id == id).FirstOrDefaultAsync());
         }
         [HttpPost]
-        public async Task<IActionResult> CreateUpdate(Packge packge)
+        public async Task<IActionResult> CreateUpdate(Packge packge, IFormFile file)
         {
+            string? accessToken = HttpContext.Request.Cookies["user-access-token"];
+            User? user = _context.Users.Where(x => x.AccessToken.Equals(accessToken)).FirstOrDefault();
+            if (user != null)
+            {
+                packge.UserId = user.Id;
+                string name = $"{DateTime.UtcNow.Ticks}-";
+                if (file == null || file.Length == 0)
+                    return Content("file not selected");
 
-            packge.UserId = 1;
-            _context.Packges.Update(packge);
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images", name + file.FileName);
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                    string content_type = file.ContentType;
+                }
+                packge.Img = name + file.FileName;
+                _context.Packges.Update(packge);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return Redirect("/Account/Login");
+            }
+            
         }
     }
 }

@@ -17,6 +17,7 @@
                     <th>@Html.DisplayName("Name")</th>
                      <th>@Html.DisplayName("Speed")</th>
                      <th>@Html.DisplayName("Volume")</th>
+                     <th>@Html.DisplayName("User Name")</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -26,6 +27,7 @@
                     <td>@item.Name</td>
                     <td>@item.Speed.Name</td>
                     <td>@item.Volume.Name</td>
+                    <td>@item.User.Name</td>
                     <td>
                         <a asp-action="CreateUpdate" asp-route-id="@item.Id">Edit</a> |
                         <a asp-action="Delete" asp-route-id="@item.Id" id="confirm" onclick = "return confirm('Record will be deleted permanently. Are you sure?');">Delete</a> |
