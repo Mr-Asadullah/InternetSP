@@ -54,8 +54,7 @@ namespace InternetSP.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateUpdate(Packge packge, IFormFile file)
         {
-            string? accessToken = HttpContext.Request.Cookies["user-access-token"];
-            User? user = _context.Users.Where(x => x.AccessToken.Equals(accessToken)).FirstOrDefault();
+            var user = new CommonController(_context).GetUserId(Request);
             if (user != null)
             {
                 packge.UserId = user.Id;
