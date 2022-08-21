@@ -5,7 +5,7 @@
         public int Id { get; set; }
         public string Name { get; set; }
         public string Detail { get; set; }
-        public string Price { get; set; }
+        public int Price { get; set; }
         public string Img { get; set; }
         public virtual Volume Volume { get; set; }
         public int VolumeId { get; set; }

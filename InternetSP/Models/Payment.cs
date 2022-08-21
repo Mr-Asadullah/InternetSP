@@ -5,6 +5,7 @@
         public int Id { get; set; }
         public string Image { get; set; }
         public DateTime PaymentTime { get; set; }
+        public int Price { get; set; }
         public virtual User User { get; set; }
         public int UserId { get; set; }
         public virtual Packge Package { get; set; }

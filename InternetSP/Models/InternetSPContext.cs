@@ -27,6 +27,5 @@ namespace InternetSP.Models
         public DbSet<Role> Roles { get; set; }
         public DbSet<Speed> Speeds { get; set; }
         public DbSet<Volume> Volumes { get; set; }
-        public DbSet<SubscribePkg> SubscribePkgs { get; set; }
     }
 }
