@@ -49,7 +49,7 @@ namespace InternetSP.Migrations
 
                     b.HasIndex("SenderId");
 
-                    b.ToTable("Messages");
+                    b.ToTable("Messages", (string)null);
                 });
 
             modelBuilder.Entity("InternetSP.Models.Packge", b =>
@@ -93,7 +93,7 @@ namespace InternetSP.Migrations
 
                     b.HasIndex("VolumeId");
 
-                    b.ToTable("Packges");
+                    b.ToTable("Packges", (string)null);
                 });
 
             modelBuilder.Entity("InternetSP.Models.Payment", b =>
@@ -128,7 +128,7 @@ namespace InternetSP.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Payments");
+                    b.ToTable("Payments", (string)null);
                 });
 
             modelBuilder.Entity("InternetSP.Models.PaymentStatus", b =>
@@ -145,7 +145,7 @@ namespace InternetSP.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentStatuses");
+                    b.ToTable("PaymentStatuses", (string)null);
                 });
 
             modelBuilder.Entity("InternetSP.Models.Role", b =>
@@ -162,7 +162,7 @@ namespace InternetSP.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("InternetSP.Models.Speed", b =>
@@ -179,7 +179,7 @@ namespace InternetSP.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Speeds");
+                    b.ToTable("Speeds", (string)null);
                 });
 
             modelBuilder.Entity("InternetSP.Models.User", b =>
@@ -224,7 +224,7 @@ namespace InternetSP.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("InternetSP.Models.Volume", b =>
@@ -241,7 +241,7 @@ namespace InternetSP.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Volumes");
+                    b.ToTable("Volumes", (string)null);
                 });
 
             modelBuilder.Entity("InternetSP.Models.Message", b =>
